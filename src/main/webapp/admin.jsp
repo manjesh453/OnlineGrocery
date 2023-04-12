@@ -1,4 +1,8 @@
 <%@page import="entities.User" %>
+<%@page import="dao.CategoryDao" %>
+<%@page import="helper.FactoryProvider" %>
+<%@page import="entities.Category" %> 
+<%@ page import="java.util.List" %>      
 <%
   User user=(User)session.getAttribute("current-user");
    if(user==null){
@@ -9,7 +13,7 @@
 	   if(user.getUser_type().equalsIgnoreCase("normal")){
 		   session.setAttribute("message","You are not admin!Dont access this page");
 		   response.sendRedirect("login.jsp");
-		   return;
+		   return;  
 	   }
    }
 %>
@@ -121,7 +125,7 @@
 </div>
 
 <!-- end of add category -->
-<!-- Product model -->
+<!-- Product modal -->
 <div class="modal fade" id="add-product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -132,7 +136,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="addcategory" method="post">
+        <form action="addcategory" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="addcate" value="addproduct">
         <div class="form-group">
          <input type="text" class="form-control"name="pName" placeholder="Enter Product Name" required> 
        </div>
@@ -149,13 +154,21 @@
          <input type="number" class="form-control"name="pQuantity" placeholder="Enter Product Quantity" required> 
        </div>
        <!-- product category -->
+       <!-- getting category list from CategoryDao -->
+       <%
+       CategoryDao cdao=new CategoryDao(FactoryProvider.getFactory());
+       List<Category>list=cdao.getCategory();
+        
+        %>
+       
        <div class="form-group">
        <label>Select Category</label>
        <select name="catId" id="">
-       <option value="fruits">fruits</option>
-        <option value="Vegetables">Vegetables</option>
-        <option value="Drinks">Drinks</option>
-       
+       <%
+       for(Category c:list){
+       %>
+       <option value="<%=c.getCategoryid() %>"><%=c.getCategoryTitle() %></option>
+        <%} %>
        </select>
        
        </div>
@@ -163,6 +176,9 @@
        <label for="picture">Select Picture</label>
        <input type="file" name="pPic" id="picture"required/>
        
+       </div>
+       <div class="conatainer text-center">
+       <button class="btn btn-outline-success">Add Product</button>
        </div>
        
         </form>

@@ -7,6 +7,11 @@
 }
 
 .admin .card:hover{
-	background:grey;
+	background:F4ECEB;
 	cursor:pointer;
+}
+.list-group-item.active{
+	background:Orange;
+	border-color:orange;
+	
 }
