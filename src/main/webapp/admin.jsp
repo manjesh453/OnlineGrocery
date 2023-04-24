@@ -1,8 +1,10 @@
 <%@page import="entities.User" %>
 <%@page import="dao.CategoryDao" %>
+<%@page import="helper.Helper" %>
 <%@page import="helper.FactoryProvider" %>
 <%@page import="entities.Category" %> 
-<%@ page import="java.util.List" %>      
+<%@ page import="java.util.*" %>   
+   
 <%
   User user=(User)session.getAttribute("current-user");
    if(user==null){
@@ -17,6 +19,14 @@
 	   }
    }
 %>
+ <%
+       CategoryDao cdao=new CategoryDao(FactoryProvider.getFactory());
+       List<Category>list=cdao.getCategory();
+       //getting count
+      Map<String,Long>m= Helper.getCount(FactoryProvider.getFactory());
+        
+        %>
+       
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -40,6 +50,7 @@
      <div class="container" style="display: flex; justify-content: center; align-items: center;">
      <img style="max-width:100px;" class="img-fluid rounded-circle" alt="User_pic" src="img\customer.png">
      </div>
+     <h1 class="text-center"><%=m.get("userCount") %></h1>
      <h1 class="text-center text-uppercase text-muted">Users</h1>
      </div>
      </div>
@@ -50,6 +61,7 @@
      <div class="container" style="display: flex; justify-content: center; align-items: center;">
      <img style="max-width:100px;" class="img-fluid rounded-circle" alt="list_pic" src="img\options-lines.png">
      </div>
+     <h1 class="text-center"><%=list.size() %></h1>
      <h1 class="text-center text-uppercase text-muted">Categories</h1>
      </div>
      </div>
@@ -60,6 +72,7 @@
      <div class="container" style="display: flex; justify-content: center; align-items: center;">
      <img style="max-width:100px;" class="img-fluid rounded-circle" alt="Products_pic" src="img\dairy-products.png">
      </div>
+     <h1 class="text-center"><%=m.get("productCount") %></h1>
      <h1 class="text-center text-uppercase text-muted">Products</h1>
      </div>
      </div>
@@ -155,12 +168,6 @@
        </div>
        <!-- product category -->
        <!-- getting category list from CategoryDao -->
-       <%
-       CategoryDao cdao=new CategoryDao(FactoryProvider.getFactory());
-       List<Category>list=cdao.getCategory();
-        
-        %>
-       
        <div class="form-group">
        <label>Select Category</label>
        <select name="catId" id="">

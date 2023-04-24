@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="dao.ProductDao" %>
+
 <%@page import="dao.CategoryDao" %>
 <%@page import="helper.Helper" %>
 <%@page import="helper.FactoryProvider" %>
@@ -89,5 +90,6 @@ for(Product p:list){
 </div>
 </div>
 </div>
+<%@include file="Components/common_modal.jsp" %>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <%@page import="entities.User" %>
-
 <% 
 User user1=(User)session.getAttribute("current-user");
 
@@ -24,15 +23,14 @@ User user1=(User)session.getAttribute("current-user");
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Category
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+    
+    
+     <li class="nav-item active">
+    <a class="nav-link" href="#"data-toggle="modal" data-target="#cart"><i class="fa fa-cart-plus" style="font-size:30px;"></i><span class="ml-1 card-items" style="font-size:15px;">(0)</span></a>
+    </li>
     <%
     
     if(user1==null){
@@ -46,7 +44,7 @@ User user1=(User)session.getAttribute("current-user");
     <%}
     else{%>
     <li class="nav-item active">
-    <a class="nav-link" href="#"><%=user1.getUser_name() %></a>
+    <a class="nav-link" href="<%=user1.getUser_type().equals("admin")?"admin.jsp":"index.jsp" %>"><%=user1.getUser_name() %></a>
     </li>
     <li class="nav-item active">
     <a class="nav-link" href="logout">LogOut</a>
