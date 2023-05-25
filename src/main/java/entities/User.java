@@ -14,7 +14,6 @@ private String user_name;
 private String user_email;
 private String user_password;
 private String user_phone;
-private String user_pic;
 private String user_address;
 private String user_type;
 public User(String user_name, String user_email, String user_password, String user_phone, String user_pic,
@@ -24,11 +23,10 @@ public User(String user_name, String user_email, String user_password, String us
 	this.user_email = user_email;
 	this.user_password = user_password;
 	this.user_phone = user_phone;
-	this.user_pic = user_pic;
 	this.user_address = user_address;
 	this.user_type = user_type;
 }
-public User(int user_id, String user_name, String user_email, String user_password, String user_phone, String user_pic,
+public User(int user_id, String user_name, String user_email, String user_password, String user_phone,
 		String user_address, String user_type) {
 	super();
 	this.user_id = user_id;
@@ -36,7 +34,6 @@ public User(int user_id, String user_name, String user_email, String user_passwo
 	this.user_email = user_email;
 	this.user_password = user_password;
 	this.user_phone = user_phone;
-	this.user_pic = user_pic;
 	this.user_address = user_address;
 	this.user_type = user_type;
 }
@@ -74,12 +71,6 @@ public String getUser_phone() {
 public void setUser_phone(String user_phone) {
 	this.user_phone = user_phone;
 }
-public String getUser_pic() {
-	return user_pic;
-}
-public void setUser_pic(String user_pic) {
-	this.user_pic = user_pic;
-}
 public String getUser_address() {
 	return user_address;
 }
@@ -95,7 +86,7 @@ public void setUser_type(String user_type) {
 @Override
 public String toString() {
 	return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_password="
-			+ user_password + ", user_phone=" + user_phone + ", user_pic=" + user_pic + ", user_address=" + user_address
+			+ user_password + ", user_phone=" + user_phone+ ", user_address=" + user_address
 			+ ", user_type=" + user_type + "]";
 }
 

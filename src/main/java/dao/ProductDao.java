@@ -19,7 +19,7 @@ public class ProductDao {
      }
      //get all products
      public List<Product> getAllProducts(){
-    	Session s= this.factory.openSession();
+    	Session s= factory.openSession();
     	Query query=s.createQuery("from Product");
     	List<Product>list=query.getResultList();
     	return list;

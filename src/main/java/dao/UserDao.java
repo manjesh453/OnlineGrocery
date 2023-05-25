@@ -12,7 +12,7 @@ public class UserDao {
 	public UserDao(SessionFactory factory) {
 		this.factory = factory;
 	}
-    //get user by email and pssword
+    //get user by email and password
 	public User getUserByEmailAndPasswors(String email,String password) {
 		User user=null;
 		try {

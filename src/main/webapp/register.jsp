@@ -9,7 +9,8 @@
 
 </head>
 <body>
-<%@include file="Components/navbar.jsp" %>
+<%@include file="Components/navbar.jsp"%>
+<%@include file="Components/message.jsp" %>
 <div class="container-fluid">
 <div class="row mt-3">
 <div class="col-md-3 offset-md-5">

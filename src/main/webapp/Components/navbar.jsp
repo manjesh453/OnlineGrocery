@@ -19,11 +19,7 @@ User user1=(User)session.getAttribute("current-user");
       <li class="nav-item active">
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Category
-        </a>
-      </li>
+     
     </ul>
     <ul class="navbar-nav ml-auto">
     
